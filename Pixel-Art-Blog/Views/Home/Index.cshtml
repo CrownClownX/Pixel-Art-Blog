@@ -1,6 +1,13 @@
-﻿@{
+﻿@model IEnumerable<Pixel_Art_Blog.Core.Domain.Category>
+
+@{
     ViewBag.Title = "Index";
 }
 <h2>@ViewBag.Title.</h2>
 
 <p>Use this area to provide additional information.</p>
+
+@foreach(var a in Model)
+{
+    <h1>@a.Name</h1>
+}

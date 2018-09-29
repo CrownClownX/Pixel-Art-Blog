@@ -1,4 +1,6 @@
 ﻿using Ninject;
+using Pixel_Art_Blog.Core;
+using Pixel_Art_Blog.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,7 @@ namespace Pixel_Art_Blog.Infrastructure
 
         private void AddBindings()
         {
-
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }
 }
