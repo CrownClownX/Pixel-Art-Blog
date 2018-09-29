@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixel-Art-Blog", "Pixel-Art-Blog\Pixel-Art-Blog.csproj", "{D3BAE8F1-9725-4A65-8BEC-2114394C9194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixel-Art-Blog.Tests", "Pixel-Art-Blog.Tests\Pixel-Art-Blog.Tests.csproj", "{2EE2FA1F-9C9F-4005-9467-6A686826D29D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3BAE8F1-9725-4A65-8BEC-2114394C9194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BAE8F1-9725-4A65-8BEC-2114394C9194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BAE8F1-9725-4A65-8BEC-2114394C9194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BAE8F1-9725-4A65-8BEC-2114394C9194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE2FA1F-9C9F-4005-9467-6A686826D29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE2FA1F-9C9F-4005-9467-6A686826D29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE2FA1F-9C9F-4005-9467-6A686826D29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE2FA1F-9C9F-4005-9467-6A686826D29D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8747687C-D156-4CAC-B2B9-7B2BF7487E5B}
+	EndGlobalSection
+EndGlobal
