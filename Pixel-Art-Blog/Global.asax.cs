@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pixel_Art_Blog.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace Pixel_Art_Blog
     {
         protected void Application_Start()
         {
+            MappingProfile.RegisterMap();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

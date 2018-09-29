@@ -14,9 +14,15 @@ namespace Pixel_Art_Blog
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: null,
+                url: "post{id}",
+                defaults: new { controller = "post", action = "post", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,0 +1,17 @@
+﻿@model Pixel_Art_Blog.Models.MainIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Title.</h2>
+
+<p>Use this area to provide additional information.</p>
+
+<h1>@Model.MainPost.Title</h1>
+
+<h2>@Model.SidePosts[0].Title</h2>
+<h2>@Model.SidePosts[1].Title</h2>
+
+<h3>@Model.RowPosts[0].Title</h3>
+<h3>@Model.RowPosts[1].Title</h3>
+<h3>@Model.RowPosts[2].Title</h3>
