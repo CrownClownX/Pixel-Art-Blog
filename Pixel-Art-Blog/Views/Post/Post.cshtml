@@ -1,7 +1,19 @@
-﻿@model Pixel_Art_Blog.Core.Domain.Post
+﻿@model Pixel_Art_Blog.Models.PostViewModel
 @{
-    ViewBag.Title = "Post";
+    ViewBag.Title = Model.Post.Title;
 }
+<div class="row">
+    <article>
+        <h2>@Model.Post.Title</h2>
 
-<h2>@Model.Title</h2>
+        <div class="post-container">
+            <p>
+                @Model.Post.Content
+            </p>
+        </div>
 
+        <div class="author">
+            <h4>@Model.Author</h4>
+        </div>
+    </article>
+</div>

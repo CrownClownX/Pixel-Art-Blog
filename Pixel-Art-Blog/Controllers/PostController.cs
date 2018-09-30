@@ -39,14 +39,19 @@ namespace Pixel_Art_Blog.Controllers
 
         public ViewResult Post(int id)
         {
-            var model = _unitOfWork.Posts.Get(id);
+            var post = _unitOfWork.Posts.Get(id);
 
-            if(model == null)
+            if (post == null)
             {
                 throw new NotImplementedException();
             }
 
-            return View(Mapper.Map<Post, PostDto>(model));
+            var model = new PostViewModel()
+            {
+                Post = Mapper.Map<Post, PostDto>(post)
+            };
+
+            return View(model);
         }
     }
 }

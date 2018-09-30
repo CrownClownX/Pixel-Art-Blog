@@ -490,3 +490,25 @@ footer p {
 .js-animate-2.animated {
     opacity: 1;
 }
+
+/*----------------------------------------------*/
+/*---------------- POST SETUP ----------------*/
+/*----------------------------------------------*/
+
+article {
+    width: 60%;
+    margin-left: 20%;
+}
+
+article h2 {
+    padding-top: 50px;
+}
+
+.post-container {
+    padding: 20px 0;
+}
+
+.author {
+    float: right;
+    margin-bottom: 20px;
+}

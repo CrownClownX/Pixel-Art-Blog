@@ -4,6 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+<!--TODO
+        Get rid of marking after using super scrooling
+        Make things in loop
+    -->
+
 <section class="section-posts">
     <div class="row">
         <div class="col span-2-of-3 main-box">
@@ -11,7 +16,8 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/days.png" alt="Days" />
                 </figure>
-                <h2><a href="#">@Model.MainPost.Title</a></h2>
+                <h2>@Html.ActionLink(Model.MainPost.Title, "Post", "Post", 
+                   new { id = Model.MainPost.ID }, null)</h2>
                 <p class="main-post">
                     @Model.MainPost.Description
                 </p>
@@ -23,7 +29,8 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
                 </figure>
-                <h3><a href="#">@Model.SidePosts[0].Title</a></h3>
+                <h3>@Html.ActionLink(Model.SidePosts[0].Title, "Post", "Post",
+                    new { id = Model.SidePosts[0].ID }, null)</h3>
                 <p>
                     @Model.SidePosts[0].Description
                 </p>
@@ -33,7 +40,8 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/car.png" alt="Car" />
                 </figure>
-                <h3><a href="#">@Model.SidePosts[1].Title</a></h3>
+                <h3>@Html.ActionLink(Model.SidePosts[1].Title, "Post", "Post",
+                    new { id = Model.SidePosts[1].ID }, null)</h3>
                 <p>
                     @Model.SidePosts[1].Description
                 </p>
@@ -47,7 +55,8 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
                 </figure>
-                <h3><a href="#">@Model.RowPosts[0].Title</a></h3>
+                <h3>@Html.ActionLink(Model.RowPosts[0].Title, "Post", "Post",
+                    new { id = Model.RowPosts[0].ID }, null)</h3>
                 <p>
                     @Model.RowPosts[0].Description
                 </p>
@@ -59,7 +68,8 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/car.png" alt="Car" />
                 </figure>
-                <h3><a href="#">@Model.RowPosts[1].Title</a></h3>
+                <h3>@Html.ActionLink(Model.RowPosts[1].Title, "Post", "Post",
+                    new { id = Model.RowPosts[1].ID }, null)</h3>
                 <p>
                     @Model.RowPosts[1].Description
                 </p>
@@ -71,7 +81,9 @@
                 <figure class="post-image">
                     <img src="~/Content/Resources/Img/tower.png" alt="Tower" />
                 </figure>
-                <h3><a href="#">@Model.RowPosts[2].Title</a></h3>
+                <h3>@Html.ActionLink(Model.RowPosts[2].Title, "Post", "Post",
+                    new { id = Model.RowPosts[2].ID }, null)    
+                </h3>
                 <p>
                     @Model.RowPosts[2].Description
                 </p>
@@ -91,11 +103,10 @@
             <div class="col span-1-of-3 category">
                 <h3>
                     <i class="ion-hammer icone"></i>
-                    Tutorials
+                    @Model.Categories[0].Name
                 </h3>
                 <blockquote>
-                    This door will take you to the world of possibilities. Only things you need to go there is brave and patient.
-                    Seriously, even your clothes should stay outside.
+                    @Model.Categories[0].Description
                 </blockquote>
             </div>
         </a>
@@ -104,11 +115,10 @@
             <div class="col span-1-of-3 category">
                 <h3>
                     <i class="ion-planet icone"></i>
-                    Thoughts
+                    @Model.Categories[1].Name
                 </h3>
                 <blockquote>
-                    If you really want to see some weird wiggly-biggly just jump in here. You're not gonna regret it. At least,
-                    not now. But who knows what will be tomorrow.
+                    @Model.Categories[1].Description
                 </blockquote>
             </div>
         </a>
@@ -117,11 +127,10 @@
             <div class="col span-1-of-3 category">
                 <h3>
                     <i class="ion-beer icone"></i>
-                    Lifestyle
+                    @Model.Categories[2].Name
                 </h3>
                 <blockquote>
-                    Spooky nerd giving advices about life. Thats what you find inisde. Pls, don't go in there. After you dive
-                    into this shit you will never recover to normal.
+                    @Model.Categories[2].Description
                 </blockquote>
             </div>
         </a>
