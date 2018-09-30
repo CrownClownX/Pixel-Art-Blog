@@ -9,6 +9,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//TODO
+//    implementation of Post if equal null
+//    implementation of Index if number of posts is less than 6
+
 namespace Pixel_Art_Blog.Controllers
 {
     public class PostController : Controller

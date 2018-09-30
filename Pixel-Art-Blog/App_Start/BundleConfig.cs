@@ -9,7 +9,9 @@ namespace Pixel_Art_Blog
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.waypoints.min.js",
+                        "~/Scripts/script.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +27,10 @@ namespace Pixel_Art_Blog
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/grid.css",
+                      "~/Content/ionicons.min.css",
+                      "~/Content/animate.css",
+                      "~/Content/style.css"));
         }
     }
 }

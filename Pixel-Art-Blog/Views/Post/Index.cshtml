@@ -3,15 +3,127 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>@ViewBag.Title.</h2>
 
-<p>Use this area to provide additional information.</p>
+<section class="section-posts">
+    <div class="row">
+        <div class="col span-2-of-3 main-box">
+            <div class=" main-box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/days.png" alt="Days" />
+                </figure>
+                <h2><a href="#">@Model.MainPost.Title</a></h2>
+                <p class="main-post">
+                    @Model.MainPost.Description
+                </p>
+            </div>
+        </div>
 
-<h1>@Model.MainPost.Title</h1>
+        <div class="col span-1-of-3">
+            <div class="box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
+                </figure>
+                <h3><a href="#">@Model.SidePosts[0].Title</a></h3>
+                <p>
+                    @Model.SidePosts[0].Description
+                </p>
+            </div>
 
-<h2>@Model.SidePosts[0].Title</h2>
-<h2>@Model.SidePosts[1].Title</h2>
+            <div class="box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/car.png" alt="Car" />
+                </figure>
+                <h3><a href="#">@Model.SidePosts[1].Title</a></h3>
+                <p>
+                    @Model.SidePosts[1].Description
+                </p>
+            </div>
+        </div>
+    </div>
 
-<h3>@Model.RowPosts[0].Title</h3>
-<h3>@Model.RowPosts[1].Title</h3>
-<h3>@Model.RowPosts[2].Title</h3>
+    <div class="row">
+        <div class="col span-1-of-3">
+            <div class="box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
+                </figure>
+                <h3><a href="#">@Model.RowPosts[0].Title</a></h3>
+                <p>
+                    @Model.RowPosts[0].Description
+                </p>
+            </div>
+        </div>
+
+        <div class="col span-1-of-3">
+            <div class="box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/car.png" alt="Car" />
+                </figure>
+                <h3><a href="#">@Model.RowPosts[1].Title</a></h3>
+                <p>
+                    @Model.RowPosts[1].Description
+                </p>
+            </div>
+        </div>
+
+        <div class="col span-1-of-3">
+            <div class="box">
+                <figure class="post-image">
+                    <img src="~/Content/Resources/Img/tower.png" alt="Tower" />
+                </figure>
+                <h3><a href="#">@Model.RowPosts[2].Title</a></h3>
+                <p>
+                    @Model.RowPosts[2].Description
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section-categories" id="categories">
+    <div class="row">
+        <h2 class="bar">Go where you want</h2>
+    </div>
+
+    <div class="row js-animate-1">
+        <a href="#">
+            <div class="col span-1-of-3 category">
+                <h3>
+                    <i class="ion-hammer icone"></i>
+                    Tutorials
+                </h3>
+                <blockquote>
+                    This door will take you to the world of possibilities. Only things you need to go there is brave and patient.
+                    Seriously, even your clothes should stay outside.
+                </blockquote>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="col span-1-of-3 category">
+                <h3>
+                    <i class="ion-planet icone"></i>
+                    Thoughts
+                </h3>
+                <blockquote>
+                    If you really want to see some weird wiggly-biggly just jump in here. You're not gonna regret it. At least,
+                    not now. But who knows what will be tomorrow.
+                </blockquote>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="col span-1-of-3 category">
+                <h3>
+                    <i class="ion-beer icone"></i>
+                    Lifestyle
+                </h3>
+                <blockquote>
+                    Spooky nerd giving advices about life. Thats what you find inisde. Pls, don't go in there. After you dive
+                    into this shit you will never recover to normal.
+                </blockquote>
+            </div>
+        </a>
+    </div>
+</section>
