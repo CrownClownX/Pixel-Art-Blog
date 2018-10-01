@@ -32,6 +32,17 @@ namespace Pixel_Art_Blog.Persistence.Repositories
                 .ToList();
         }
 
+        public IEnumerable<Post> GetPostsRangeWithCategory(int page, int size, int categoryID)
+        {
+            return BlogContext.Posts
+                .Where(c => c.CategoryID == categoryID)
+                .Include(c => c.Category)
+                .OrderBy(c => c.ID)
+                .Skip((page - 1) * size)
+                .Take(size)
+                .ToList();
+        }
+
         public void Update(Post post)
         {
             var postInDb = BlogContext.Posts.Single(p => p.ID == post.ID);

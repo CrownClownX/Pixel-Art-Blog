@@ -10,5 +10,6 @@ namespace Pixel_Art_Blog.Models
     {
         public List<PostDto> Posts { get; set; }
         public List<CategoryDto> Categories { get; set; }
+        public PagingInfo Info { get; set; }
     }
 }

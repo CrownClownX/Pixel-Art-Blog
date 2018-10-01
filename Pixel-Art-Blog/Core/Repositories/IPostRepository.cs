@@ -11,6 +11,7 @@ namespace Pixel_Art_Blog.Core.Repositories
     public interface IPostRepository : IRepository<Post>
     {
         IEnumerable<Post> GetPostsRange(int page, int size);
+        IEnumerable<Post> GetPostsRangeWithCategory(int page, int size, int categoryId);
         void Update(Post post);
     }
 }

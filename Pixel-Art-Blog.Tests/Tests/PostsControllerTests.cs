@@ -45,10 +45,10 @@ namespace Pixel_Art_Blog.Tests.Tests
             PostController controller =
                 new PostController(MoqGenerator.GetMock().Object);
 
-            var result = controller.Post(3).Model as PostDto;
+            var result = controller.Post(3).Model as PostViewModel;
 
-            Assert.AreEqual(result.ID, 3);
-            Assert.IsTrue(result.Title == "P3");
+            Assert.AreEqual(result.Post.ID, 3);
+            Assert.IsTrue(result.Post.Title == "P3");
         }
     }
 }

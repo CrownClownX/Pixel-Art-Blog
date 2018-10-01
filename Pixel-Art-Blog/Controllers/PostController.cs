@@ -18,6 +18,7 @@ namespace Pixel_Art_Blog.Controllers
     public class PostController : Controller
     {
         private IUnitOfWork _unitOfWork;
+        private int _PageSize = 5;
 
         public PostController(IUnitOfWork unitOfWork)
         {
@@ -59,14 +60,25 @@ namespace Pixel_Art_Blog.Controllers
             return View();
         }
 
-        public ViewResult AllPosts()
+        public ViewResult AllPosts(int page, int categoryId = 0)
         {
-            var model = new AllPostsViewModel()
+            var posts = categoryId != 0
+                ? _unitOfWork.Posts.GetPostsRangeWithCategory(page, _PageSize, categoryId)
+                : _unitOfWork.Posts.GetPostsRange(page, _PageSize);
+
+            var pageInfo = new PagingInfo
             {
-                Posts = _unitOfWork.Posts.GetAll()
-                    .Select(Mapper.Map<Post, PostDto>).ToList(),
+                CurrentPage = page,
+                TotalItems = _unitOfWork.Posts.GetAll().Count(),
+                ItemsPerPage = _PageSize
+            };
+
+            var model = new AllPostsViewModel
+            {
+                Posts = posts.Select(Mapper.Map<Post, PostDto>).ToList(),
                 Categories = _unitOfWork.Categories.GetAll()
-                    .Select(Mapper.Map<Category, CategoryDto>).ToList()
+                    .Select(Mapper.Map<Category, CategoryDto>).ToList(),
+                Info = pageInfo
             };
 
             return View(model);

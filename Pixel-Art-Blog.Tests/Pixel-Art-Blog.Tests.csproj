@@ -96,6 +96,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AdminControllerTests.cs" />
     <Compile Include="Tests\PostsControllerTests.cs" />
+    <Compile Include="Tests\PaginationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

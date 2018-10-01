@@ -222,6 +222,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201809290626120_PostsAndCategoriesTables.cs" />
     <Compile Include="Migrations\201809290626120_PostsAndCategoriesTables.Designer.cs">
@@ -234,6 +235,7 @@
     <Compile Include="Models\MainIndexViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewPostViewModel.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Persistence\BlogContext.cs" />
     <Compile Include="Persistence\Configurations\CategoryConfiguration.cs" />
@@ -319,7 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
