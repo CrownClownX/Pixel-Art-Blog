@@ -1,0 +1,25 @@
+﻿@model List<Pixel_Art_Blog.Dtos.PostDto>
+@{
+    ViewBag.Title = "AdminPanel";
+}
+
+<h2>AdminPanel</h2>
+
+<div class="row">
+    @Html.ActionLink("ADD NEW POST", "PostForge", "Admin",
+                    new { id = 0 }, null)
+
+    <h2>POST LIST</h2>
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li>
+                @post.Title
+                @Html.ActionLink("Edit", "PostForge", "Admin",
+                         new { id = post.ID }, null)
+                <a href="#">Delete</a>
+            </li>
+        }
+    </ul>
+</div>
+

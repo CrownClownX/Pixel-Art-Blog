@@ -53,5 +53,10 @@ namespace Pixel_Art_Blog.Controllers
 
             return View(model);
         }
+
+        public ViewResult About()
+        {
+            return View();
+        }
     }
 }

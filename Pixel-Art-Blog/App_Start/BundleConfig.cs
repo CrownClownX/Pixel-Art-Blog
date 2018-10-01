@@ -11,6 +11,7 @@ namespace Pixel_Art_Blog
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.waypoints.min.js",
+                        "~/Scripts/jquery-te-1.4.0.min.js",
                         "~/Scripts/script.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -30,6 +31,7 @@ namespace Pixel_Art_Blog
                       "~/Content/grid.css",
                       "~/Content/ionicons.min.css",
                       "~/Content/animate.css",
+                      "~/Content/jquery-te-1.4.0.css",
                       "~/Content/style.css"));
         }
     }

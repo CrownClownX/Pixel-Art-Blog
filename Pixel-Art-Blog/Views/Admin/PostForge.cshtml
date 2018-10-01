@@ -1,0 +1,48 @@
+﻿@model Pixel_Art_Blog.Models.NewPostViewModel
+@{
+    ViewBag.Title = "PostForge";
+}
+<div class="row panel-container">
+    <h2>PostForge</h2>
+
+    @using (Html.BeginForm("Save", "Admin"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.Title)
+            @Html.TextBoxFor(m => m.Post.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Post.Title)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.Content)
+            @Html.TextAreaFor(m => m.Post.Content, new { @class = "form-control text-edit", @rows = 30 })
+            @Html.ValidationMessageFor(m => m.Post.Content)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.Description)
+            @Html.TextAreaFor(m => m.Post.Description, new { @class = "form-control", @rows = 5 })
+            @Html.ValidationMessageFor(m => m.Post.Description)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Post.CategoryID)
+            @Html.DropDownListFor(m => m.Post.CategoryID, new SelectList(Model.Categories, "ID", "Name"), "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Post.CategoryID)
+        </div>
+
+        @Html.HiddenFor(m => m.Post.ID)
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('.text-edit').jqte();
+        });
+    </script>
+}

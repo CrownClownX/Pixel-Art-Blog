@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using AutoMapper;
 
 namespace Pixel_Art_Blog.Persistence.Repositories
 {
@@ -29,6 +30,13 @@ namespace Pixel_Art_Blog.Persistence.Repositories
                 .Skip((page - 1) * size)
                 .Take(size)
                 .ToList();
+        }
+
+        public void Update(Post post)
+        {
+            var postInDb = BlogContext.Posts.Single(p => p.ID == post.ID);
+
+            Mapper.Map(post, postInDb);
         }
     }
 }

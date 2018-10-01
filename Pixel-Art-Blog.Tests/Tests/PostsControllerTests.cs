@@ -25,7 +25,7 @@ namespace Pixel_Art_Blog.Tests.Tests
         }
 
         [TestMethod]
-        public void IndexPostControllerTest()
+        public void MainIndexViewModelTest()
         {
             PostController controller = 
                 new PostController(MoqGenerator.GetMock().Object);
@@ -40,7 +40,7 @@ namespace Pixel_Art_Blog.Tests.Tests
         }
 
         [TestMethod]
-        public void PostPostControlerTest()
+        public void GetRightPostTest()
         {
             PostController controller =
                 new PostController(MoqGenerator.GetMock().Object);
