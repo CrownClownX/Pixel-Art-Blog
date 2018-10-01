@@ -15,9 +15,15 @@ namespace Pixel_Art_Blog
 
             routes.MapRoute(
                 name: null,
+                url: "posts",
+                defaults: new { controller = "post", action = "AllPosts" }
+            );
+
+            routes.MapRoute(
+                name: null,
                 url: "about",
                 defaults: new { controller = "post", action = "about" }
-);
+            );
 
             routes.MapRoute(
                 name: null,

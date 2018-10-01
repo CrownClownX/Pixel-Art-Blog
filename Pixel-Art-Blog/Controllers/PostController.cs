@@ -58,5 +58,18 @@ namespace Pixel_Art_Blog.Controllers
         {
             return View();
         }
+
+        public ViewResult AllPosts()
+        {
+            var model = new AllPostsViewModel()
+            {
+                Posts = _unitOfWork.Posts.GetAll()
+                    .Select(Mapper.Map<Post, PostDto>).ToList(),
+                Categories = _unitOfWork.Categories.GetAll()
+                    .Select(Mapper.Map<Category, CategoryDto>).ToList()
+            };
+
+            return View(model);
+        }
     }
 }

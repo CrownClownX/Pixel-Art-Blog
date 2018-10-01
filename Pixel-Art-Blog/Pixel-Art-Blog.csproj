@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllPostsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainIndexViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -314,6 +315,7 @@
     <Content Include="Views\Post\About.cshtml" />
     <Content Include="Views\Post\_Tutorial.cshtml" />
     <Content Include="Views\Post\_Subscription.cshtml" />
+    <Content Include="Views\Post\AllPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
