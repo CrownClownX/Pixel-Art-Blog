@@ -323,6 +323,7 @@
     <Content Include="Views\Post\_Tutorial.cshtml" />
     <Content Include="Views\Post\_Subscription.cshtml" />
     <Content Include="Views\Post\AllPosts.cshtml" />
+    <Content Include="Views\Post\TutorialPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
