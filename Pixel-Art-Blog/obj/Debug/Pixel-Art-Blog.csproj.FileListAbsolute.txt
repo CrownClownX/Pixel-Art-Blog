@@ -264,3 +264,4 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.pdb
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.PostsAndCategoriesTables.resources
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csproj.GenerateResource.cache
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.ConfigurationOfPostTable.resources

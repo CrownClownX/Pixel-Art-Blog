@@ -29,27 +29,35 @@ namespace Pixel_Art_Blog.Controllers
             return View(model);
         }
 
-        public ViewResult PostForge(int id = 0)
+        public ViewResult NewPost()
         {
             var model = new NewPostViewModel()
             {
                 Categories = _unitOfWork.Categories.GetAll()
-                      .Select(Mapper.Map<Category, CategoryDto>).ToList(),
+                     .Select(Mapper.Map<Category, CategoryDto>).ToList(),
                 Post = new PostDto()
-                {
-                    ID = 1
-                }
             };
 
-            if (id == 0)
+            return View("PostForge", model);
+        }
+
+        public ActionResult EditPost(int id = 0)
+        {
+            if(id == 0)
             {
-                return View(model);
+                return HttpNotFound();
             }
 
             var post = _unitOfWork.Posts.Get(id);
-            model.Post = Mapper.Map<Post, PostDto>(post);
 
-            return View(model);
+            var model = new NewPostViewModel()
+            {
+                Categories = _unitOfWork.Categories.GetAll()
+                      .Select(Mapper.Map<Category, CategoryDto>).ToList(),
+                Post = Mapper.Map<Post, PostDto>(post)
+            };
+
+            return View("PostForge", model);
         }
 
         [HttpPost]
@@ -68,13 +76,16 @@ namespace Pixel_Art_Blog.Controllers
                 return View("PostForge", model);
             }
 
-            if(post.ID == 0)
+            if (post.ID == 0)
             {
                 post.ReleaseDate = DateTime.Now;
                 _unitOfWork.Posts.Add(Mapper.Map<PostDto, Post>(post));
             }
+            else
+            {
+                _unitOfWork.Posts.Update(Mapper.Map<PostDto, Post>(post));
+            }
 
-            _unitOfWork.Posts.Update(Mapper.Map<PostDto, Post>(post));
             _unitOfWork.Save();
 
             return RedirectToAction("Index", "Post");

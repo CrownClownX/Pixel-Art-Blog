@@ -6,7 +6,7 @@
 <h2>AdminPanel</h2>
 
 <div class="row">
-    @Html.ActionLink("ADD NEW POST", "PostForge", "Admin",
+    @Html.ActionLink("ADD NEW POST", "NewPost", "Admin",
                     new { id = 0 }, null)
 
     <h2>POST LIST</h2>
@@ -15,7 +15,7 @@
         {
             <li>
                 @post.Title
-                @Html.ActionLink("Edit", "PostForge", "Admin",
+                @Html.ActionLink("Edit", "EditPost", "Admin",
                          new { id = post.ID }, null)
                 <a href="#">Delete</a>
             </li>

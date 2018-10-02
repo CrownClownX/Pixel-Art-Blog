@@ -47,7 +47,10 @@ namespace Pixel_Art_Blog.Persistence.Repositories
         {
             var postInDb = BlogContext.Posts.Single(p => p.ID == post.ID);
 
-            Mapper.Map(post, postInDb);
+            postInDb.Title = post.Title;
+            postInDb.Description = post.Description;
+            postInDb.Content = post.Content;
+            postInDb.CategoryID = post.CategoryID;
         }
     }
 }

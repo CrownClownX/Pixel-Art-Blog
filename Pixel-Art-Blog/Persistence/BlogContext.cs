@@ -1,4 +1,5 @@
 ﻿using Pixel_Art_Blog.Core.Domain;
+using Pixel_Art_Blog.Persistence.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,5 +18,11 @@ namespace Pixel_Art_Blog.Persistence
 
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new PostConfiguration());
+        }
     }
 }

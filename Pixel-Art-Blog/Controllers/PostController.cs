@@ -60,7 +60,7 @@ namespace Pixel_Art_Blog.Controllers
             return View();
         }
 
-        public ViewResult AllPosts(int page, int categoryId = 0)
+        public ViewResult AllPosts(int page = 1, int categoryId = 0)
         {
             var posts = categoryId != 0
                 ? _unitOfWork.Posts.GetPostsRangeWithCategory(page, _PageSize, categoryId)

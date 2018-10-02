@@ -16,7 +16,7 @@ namespace Pixel_Art_Blog
             routes.MapRoute(
                 name: null,
                 url: "posts{page}/{categoryId}",
-                defaults: new { controller = "post", action = "AllPosts", categoryId = UrlParameter.Optional }
+                defaults: new { controller = "post", action = "AllPosts", categoryId = UrlParameter.Optional, page = UrlParameter.Optional }
             );
 
             routes.MapRoute(

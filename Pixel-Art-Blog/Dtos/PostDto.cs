@@ -16,7 +16,7 @@ namespace Pixel_Art_Blog.Dtos
         public DateTime ReleaseDate { get; set; }
         public string Img { get; set; }
 
-        public Category Category { get; set; }
+        public CategoryDto Category { get; set; }
         public int CategoryID { get; set; }
     }
 }
