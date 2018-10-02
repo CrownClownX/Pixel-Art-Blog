@@ -13,7 +13,7 @@ namespace Pixel_Art_Blog.Core.Domain
         public string Content { get; set; }
 
         public DateTime ReleaseDate { get; set; }
-        public string Img { get; set; }
+        public String Img { get; set; }
 
         public Category Category { get; set; }
         public int CategoryID { get; set; }

@@ -62,7 +62,7 @@ namespace Pixel_Art_Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(PostDto post)
+        public ActionResult Save(FormViewModel formData)
         {
             if(!ModelState.IsValid)
             {
@@ -70,20 +70,27 @@ namespace Pixel_Art_Blog.Controllers
                 {
                     Categories = _unitOfWork.Categories.GetAll()
                       .Select(Mapper.Map<Category, CategoryDto>).ToList(),
-                    Post = post
+                    Post = formData.Post
                 };
 
                 return View("PostForge", model);
             }
 
-            if (post.ID == 0)
+            if(formData.Img != null)
             {
-                post.ReleaseDate = DateTime.Now;
-                _unitOfWork.Posts.Add(Mapper.Map<PostDto, Post>(post));
+                formData.Img.SaveAs(HttpContext.Server.MapPath("~/Content/Img/")
+                                                  + formData.Img.FileName);
+                formData.Post.Img = formData.Img.FileName;
+            }
+
+            if (formData.Post.ID == 0)
+            {
+                formData.Post.ReleaseDate = DateTime.Now;
+                _unitOfWork.Posts.Add(Mapper.Map<PostDto, Post>(formData.Post));
             }
             else
             {
-                _unitOfWork.Posts.Update(Mapper.Map<PostDto, Post>(post));
+                _unitOfWork.Posts.Update(Mapper.Map<PostDto, Post>(formData.Post));
             }
 
             _unitOfWork.Save();
