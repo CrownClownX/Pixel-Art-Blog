@@ -11,6 +11,6 @@ namespace Pixel_Art_Blog.Core
     {
         IPostRepository Posts { get; }
         ICategoryRepository Categories { get; }
-        int Save();
+        int Complete();
     }
 }

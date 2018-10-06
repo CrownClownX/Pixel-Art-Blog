@@ -4,26 +4,28 @@ using Pixel_Art_Blog.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Pixel_Art_Blog.Tests.Helpers
 {
     public static class MoqGenerator
     {
-        private static IEnumerable<Post> _dataPosts()
+        private static IQueryable<Post> _dataPosts()
         {
             var data = new List<Post>()
             {
-                new Post {ID = 1, Title = "P1", CategoryID = 2, ReleaseDate = DateTime.Now},
-                new Post {ID = 2, Title = "P2", CategoryID = 3, ReleaseDate = DateTime.Now},
-                new Post {ID = 3, Title = "P3", CategoryID = 1, ReleaseDate = DateTime.Now},
-                new Post {ID = 4, Title = "P4", CategoryID = 2, ReleaseDate = DateTime.Now},
-                new Post {ID = 5, Title = "P5", CategoryID = 3, ReleaseDate = DateTime.Now},
-                new Post {ID = 6, Title = "P6", CategoryID = 1, ReleaseDate = DateTime.Now}
+                new Post {ID = 1, Title = "P1", CategoryID = 2, ReleaseDate = DateTime.Now, Img = "Img1.jpg"},
+                new Post {ID = 2, Title = "P2", CategoryID = 3, ReleaseDate = DateTime.Now, Img = "Img2.jpg"},
+                new Post {ID = 3, Title = "P3", CategoryID = 1, ReleaseDate = DateTime.Now, Img = "Img3.jpg"},
+                new Post {ID = 4, Title = "P4", CategoryID = 2, ReleaseDate = DateTime.Now, Img = "Img4.jpg"},
+                new Post {ID = 5, Title = "P5", CategoryID = 3, ReleaseDate = DateTime.Now, Img = "Img5.jpg"},
+                new Post {ID = 6, Title = "P6", CategoryID = 1, ReleaseDate = DateTime.Now, Img = "Img.jpg"}
             };
 
-            return data;
+            return data.AsQueryable();
         }
 
         private static IEnumerable<Category> _dataCategories()
@@ -38,7 +40,7 @@ namespace Pixel_Art_Blog.Tests.Helpers
             return data;
         }
 
-        public static Mock<IUnitOfWork> GetMock()
+        public static Mock<IUnitOfWork> GetMockRepository()
         {
             Mock<IUnitOfWork> mock = new Mock<IUnitOfWork>();
 
@@ -54,6 +56,22 @@ namespace Pixel_Art_Blog.Tests.Helpers
             mock.Setup(m => m.Posts.Get(It.IsAny<int>()))
                 .Returns((int id) => _dataPosts()
                     .SingleOrDefault(p => p.ID == id));
+
+            mock.Setup(m => m.Posts.Find(It.IsAny<Expression<Func<Post, bool>>>()))
+                .Returns((Expression<Func<Post, bool>> predicate) =>
+                    _dataPosts().Where(predicate));
+
+            return mock;
+        }
+
+        public static Mock<HttpPostedFileBase> GetMockHttpPostedFileBase()
+        {
+            Mock<HttpPostedFileBase> mock = new Mock<HttpPostedFileBase>();
+
+            mock.Setup(m => m.FileName)
+                .Returns("Img.jpg");
+
+            mock.Setup(m => m.SaveAs(It.IsAny<string>()));
 
             return mock;
         }

@@ -21,7 +21,6 @@ namespace Pixel_Art_Blog.Persistence
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new PostConfiguration());
         }
     }

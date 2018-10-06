@@ -22,7 +22,7 @@ namespace Pixel_Art_Blog.Persistence
         public IPostRepository Posts { get; private set; }
         public ICategoryRepository Categories { get; private set; }
 
-        public int Save()
+        public int Complete()
         {
             return _context.SaveChanges();
         }

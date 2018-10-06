@@ -257,7 +257,6 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\Microsoft.AI.Dependen
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\Microsoft.AI.Web.xml
-C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csprojResolveAssemblyReference.cache
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csproj.CoreCompileInputs.cache
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csproj.CopyComplete
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.dll
@@ -265,3 +264,12 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.PostsAndCategoriesTables.resources
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csproj.GenerateResource.cache
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.ConfigurationOfPostTable.resources
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.Mvc.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.ValidatorAttribute.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\System.ComponentModel.Annotations.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\System.ComponentModel.Primitives.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.xml
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.Mvc.xml
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csprojResolveAssemblyReference.cache
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.ChangesInPostConfiguration.resources

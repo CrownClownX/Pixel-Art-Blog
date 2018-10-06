@@ -12,6 +12,7 @@ using System.Web.Mvc;
 //TODO
 //    implementation of Post if equal null
 //    implementation of Index if number of posts is less than 6
+//    tests to both mentioned above
 
 namespace Pixel_Art_Blog.Controllers
 {

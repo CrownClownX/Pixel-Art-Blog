@@ -1,4 +1,5 @@
-﻿using Pixel_Art_Blog.App_Start;
+﻿using FluentValidation.Mvc;
+using Pixel_Art_Blog.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Pixel_Art_Blog
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FluentValidationModelValidatorProvider.Configure();
         }
     }
 }

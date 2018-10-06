@@ -95,6 +95,7 @@
     <Compile Include="Helpers\MoqGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AdminControllerTests.cs" />
+    <Compile Include="Tests\ImageManagerTests.cs" />
     <Compile Include="Tests\PostsControllerTests.cs" />
     <Compile Include="Tests\PaginationTest.cs" />
   </ItemGroup>

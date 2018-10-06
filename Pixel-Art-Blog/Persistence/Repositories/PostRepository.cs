@@ -43,14 +43,23 @@ namespace Pixel_Art_Blog.Persistence.Repositories
                 .ToList();
         }
 
-        public void Update(Post post)
+        public void Save(Post post)
         {
+            if(post.ID == 0)
+            {
+                post.ReleaseDate = DateTime.Now;
+                Add(post);
+
+                return;
+            }
+
             var postInDb = BlogContext.Posts.Single(p => p.ID == post.ID);
 
             postInDb.Title = post.Title;
             postInDb.Description = post.Description;
             postInDb.Content = post.Content;
             postInDb.CategoryID = post.CategoryID;
+            postInDb.Img = post.Img ?? postInDb.Img;
         }
     }
 }

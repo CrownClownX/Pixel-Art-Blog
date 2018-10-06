@@ -17,7 +17,7 @@ namespace Pixel_Art_Blog.Tests.Tests
         public void AddNewPostTest()
         {
             AdminController controller = 
-                new AdminController(MoqGenerator.GetMock().Object);
+                new AdminController(MoqGenerator.GetMockRepository().Object);
 
             var post = new PostDto()
             {

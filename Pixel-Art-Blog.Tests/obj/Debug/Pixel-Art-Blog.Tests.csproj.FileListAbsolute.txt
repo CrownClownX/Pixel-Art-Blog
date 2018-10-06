@@ -65,3 +65,8 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\obj\Debug\Pixel-Art
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\obj\Debug\Pixel-Art-Blog.Tests.csproj.CopyComplete
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\obj\Debug\Pixel-Art-Blog.Tests.dll
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\obj\Debug\Pixel-Art-Blog.Tests.pdb
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.ValidatorAttribute.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.Mvc.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.xml
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.Mvc.xml

@@ -2,12 +2,16 @@
 using Pixel_Art_Blog.Core;
 using Pixel_Art_Blog.Core.Domain;
 using Pixel_Art_Blog.Dtos;
+using Pixel_Art_Blog.Helpers;
 using Pixel_Art_Blog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+//TODO
+//Don't know how send image with Edit action. So it's still not implemented (here and in Repository)
 
 namespace Pixel_Art_Blog.Controllers
 {
@@ -54,7 +58,7 @@ namespace Pixel_Art_Blog.Controllers
             {
                 Categories = _unitOfWork.Categories.GetAll()
                       .Select(Mapper.Map<Category, CategoryDto>).ToList(),
-                Post = Mapper.Map<Post, PostDto>(post)
+                Post = Mapper.Map<Post, PostDto>(post),
             };
 
             return View("PostForge", model);
@@ -64,36 +68,24 @@ namespace Pixel_Art_Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(FormViewModel formData)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var model = new NewPostViewModel()
                 {
                     Categories = _unitOfWork.Categories.GetAll()
                       .Select(Mapper.Map<Category, CategoryDto>).ToList(),
-                    Post = formData.Post
+                    Post = formData.Post,
+                    Img = formData.Img
                 };
 
                 return View("PostForge", model);
             }
 
-            if(formData.Img != null)
-            {
-                formData.Img.SaveAs(HttpContext.Server.MapPath("~/Content/Img/")
-                                                  + formData.Img.FileName);
-                formData.Post.Img = formData.Img.FileName;
-            }
-
-            if (formData.Post.ID == 0)
-            {
-                formData.Post.ReleaseDate = DateTime.Now;
-                _unitOfWork.Posts.Add(Mapper.Map<PostDto, Post>(formData.Post));
-            }
-            else
-            {
-                _unitOfWork.Posts.Update(Mapper.Map<PostDto, Post>(formData.Post));
-            }
-
-            _unitOfWork.Save();
+            formData.Post.Img = ImageManager.GetImagePath(formData.Img,
+                _unitOfWork, HttpContext.Server.MapPath("~/Content/Img/")) ?? formData.Post.Img;
+           
+            _unitOfWork.Posts.Save(Mapper.Map<PostDto, Post>(formData.Post));
+            _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Post");
         }

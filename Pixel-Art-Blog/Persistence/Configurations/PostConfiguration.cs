@@ -21,6 +21,12 @@ namespace Pixel_Art_Blog.Persistence.Configurations
 
             Property(c => c.CategoryID)
                 .IsRequired();
+
+            Property(c => c.Img)
+                .IsRequired();
+
+            Property(c => c.ReleaseDate)
+                .IsRequired();
         }
     }
 }

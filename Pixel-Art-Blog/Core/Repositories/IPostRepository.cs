@@ -12,6 +12,6 @@ namespace Pixel_Art_Blog.Core.Repositories
     {
         IEnumerable<Post> GetPostsRange(int page, int size);
         IEnumerable<Post> GetPostsRangeWithCategory(int page, int size, int categoryId);
-        void Update(Post post);
+        void Save(Post post);
     }
 }
