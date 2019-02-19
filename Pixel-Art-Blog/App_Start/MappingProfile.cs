@@ -15,10 +15,13 @@ namespace Pixel_Art_Blog.App_Start
             Mapper.Initialize(config =>
             {
                 config.CreateMap<Post, PostDto>()
-                .ReverseMap();
+                    .ReverseMap();
 
                 config.CreateMap<Category, CategoryDto>()
-                .ReverseMap();
+                    .ReverseMap();
+
+                config.CreateMap<Subscriber, SubscriberDto>()
+                    .ReverseMap();
             });
         }
     }

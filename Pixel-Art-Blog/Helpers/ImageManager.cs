@@ -1,5 +1,6 @@
 ﻿using Pixel_Art_Blog.Core;
 using Pixel_Art_Blog.Core.Domain;
+using Pixel_Art_Blog.Helpers.Interfaces;
 using Pixel_Art_Blog.Persistence;
 using System;
 using System.Collections.Generic;
@@ -9,36 +10,31 @@ using System.Web;
 
 namespace Pixel_Art_Blog.Helpers
 {
-    public static class ImageManager
+    public class ImageManager : IImageManager
     {
-        public static string GetImagePath(HttpPostedFileBase img, IUnitOfWork unitOfWork, string path)
+        private int MAX_SUPPORTED = 10 * 1024 * 1024;
+        private string[] SUPPORTED_EXTENSIONS = new []
+        {
+            ".png",
+            ".jpeg",
+            ".jpg"
+        };
+
+        public string SaveImage(HttpPostedFileBase img, string path)
         {
             if(img == null)
-            {
                 return null;
-            }
+            if(img.ContentLength == 0)
+                return null;
+            if (img.ContentLength > MAX_SUPPORTED)
+                return null;
+            if (!SUPPORTED_EXTENSIONS.Any(i => i == Path.GetExtension(img.FileName)))
+                return null;
 
-            string imgName = img.FileName;
-            var result = unitOfWork.Posts.Find(p => p.Img == imgName);
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(img.FileName);
+            img.SaveAs(path + fileName);
 
-            int i = 0;
-            string fName = Path.GetFileNameWithoutExtension(imgName);
-            string fExt = Path.GetExtension(imgName);
-
-            while (result.Count() != 0)
-            {
-                i++;
-                result = unitOfWork.Posts.Find(
-                    p => p.Img == (fName + i.ToString() + fExt));
-            }
-
-            imgName = (i > 0)
-                ? String.Concat(fName, i.ToString(), fExt)
-                : imgName;
-            
-            img.SaveAs(path + imgName);
-
-            return imgName;
+            return fileName;
         }
     }
 }

@@ -3,23 +3,67 @@
     ViewBag.Title = "AdminPanel";
 }
 
-<h2>AdminPanel</h2>
+<h1 class="bar">AdminPanel</h1>
 
 <div class="row">
-    @Html.ActionLink("ADD NEW POST", "NewPost", "Admin",
-                    new { id = 0 }, null)
+    <div class="col span-2-of-3">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-    <h2>POST LIST</h2>
-    <ul>
-        @foreach (var post in Model)
-        {
-            <li>
-                @post.Title
-                @Html.ActionLink("Edit", "EditPost", "Admin",
-                         new { id = post.ID }, null)
-                <a href="#">Delete</a>
-            </li>
-        }
-    </ul>
+    <div class="col span-1-of-3">
+        <div class="buttons">
+            @Html.ActionLink("ADD NEW POST", "NewPost", "Admin",
+             new { id = 0 },
+             new { @class = "btn btn-first" })
+
+            <div style="margin-bottom:10px;"></div>
+
+            @using (Html.BeginForm("LogOff", "Account", null, FormMethod.Post))
+             {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <input type="submit" value="LOGOUT" class="btn btn-first" />
+                </div>
+             }
+        </div>
+    </div>
 </div>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#data-table').DataTable({
+                data: @Html.Raw(Json.Encode(Model)),
+                columns: [
+                    {
+                        data: 'Title',
+                        render: function (data, type, post) {
+                            return '<a href="/post' + post.ID + '">' + data + '</a>';
+                        }
+                    },
+                    {
+                        data: 'Category.Name'
+                    },
+                    {
+                        data: "ID",
+                        render: function (data) {
+                            return '<a class="btn btn-second" href="/post' + data + '">Edit</a>';
+                        },
+                    }
+                ],
+                order: [[2, 'desc']]
+            });
+
+        });
+    </script>
+}

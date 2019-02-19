@@ -4,14 +4,43 @@
     ViewBag.Title = "AllPosts";
 }
 
-<h2>AllPosts</h2>
+<div class="container">
 
+    <h1 class="bar">Posts</h1>
 
-@foreach(var post in Model.Posts)
-{
-    <h2>@post.Title</h2>
-}
+    <div class="category-nav">
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li>
+                    @Html.ActionLink(category.Name, "AllPosts", "Post",
+                        new { page = 1, categoryId = category.ID },
+                        new
+                        {
+                             @class =(Model.Result.CategoryId != null && category.ID == Model.Result.CategoryId)
+                                ? "btn btn-first" : "btn btn-second"
+                        })
+                </li>
+            }
+        </ul>
+    </div>
 
-<div>
-    @Html.PageLinks(Model.Info, x => Url.Action("AllPosts", new { page = x}))
+    <span class="js-waypoint"></span>
+
+    @foreach (var post in Model.Result.Posts)
+    {
+        string link = "/post" + post.ID;
+        <div class="big-box">
+            <figure class="post-image">
+                <img src="~/Content/Img/@post.Img" />
+            </figure>
+            <h3><a href="@link">@post.Title</a></h3>
+            <p>@post.Description</p>
+        </div>
+     }
+
+    <div>
+        @Html.PageLinks(Model.Result.TotalPages, Model.Result.CurrentPage, x => Url.Action("AllPosts",
+            new { page = x, categoryId = Model.Result.CategoryId }))
+    </div>
 </div>

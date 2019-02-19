@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using AutoMapper;
+using Pixel_Art_Blog.Models;
+using Pixel_Art_Blog.Core;
 
 namespace Pixel_Art_Blog.Persistence.Repositories
 {
@@ -17,6 +19,20 @@ namespace Pixel_Art_Blog.Persistence.Repositories
 
         }
 
+        public override Post Get(int id)
+        {
+            return BlogContext.Posts
+                .Include(p => p.Category)
+                .SingleOrDefault(p => p.ID == id);
+        }
+
+        public override IEnumerable<Post> GetAll()
+        {
+            return BlogContext.Posts
+                .Include(p => p.Category)
+                .ToList();
+        }
+
         public BlogContext BlogContext
         {
             get { return Context as BlogContext; }
@@ -24,6 +40,9 @@ namespace Pixel_Art_Blog.Persistence.Repositories
 
         public IEnumerable<Post> GetPostsRange(int page, int size)
         {
+            if (page <= 0)
+                return new List<Post>();
+
             return BlogContext.Posts
                 .Include(c => c.Category)
                 .OrderBy(c => c.ID)
@@ -32,23 +51,37 @@ namespace Pixel_Art_Blog.Persistence.Repositories
                 .ToList();
         }
 
-        public IEnumerable<Post> GetPostsRangeWithCategory(int page, int size, int categoryID)
+        public QueryResult GetFiltrated(QueryInfo query)
         {
-            return BlogContext.Posts
-                .Where(c => c.CategoryID == categoryID)
-                .Include(c => c.Category)
-                .OrderBy(c => c.ID)
-                .Skip((page - 1) * size)
-                .Take(size)
+            var posts = query.IfIncluded 
+                ? BlogContext.Posts.Include(c => c.Category)
+                : BlogContext.Posts;
+
+            if (query.CategoryId != null)
+                posts = posts.Where(c => c.CategoryID == query.CategoryId);
+
+            QueryResult result = new QueryResult()
+            {
+                CategoryId = query.CategoryId,
+                CurrentPage = query.CurrentPage
+            };
+
+            result.TotalPages = (int)Math.Ceiling((decimal)posts.Count() / query.ItemsPerPage);
+
+            result.Posts = posts.OrderByDescending(c => c.ID)
+                .Skip((query.CurrentPage - 1) * query.ItemsPerPage)
+                .Take(query.ItemsPerPage)
                 .ToList();
+
+            return result;
         }
 
-        public void Save(Post post)
+        public override void Add(Post post)
         {
             if(post.ID == 0)
             {
                 post.ReleaseDate = DateTime.Now;
-                Add(post);
+                base.Add(post);
 
                 return;
             }

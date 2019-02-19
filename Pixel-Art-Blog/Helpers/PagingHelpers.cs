@@ -11,20 +11,20 @@ namespace Pixel_Art_Blog.Helpers
     public static class PagingHelpers
     {
         public static MvcHtmlString PageLinks(this HtmlHelper html, 
-            PagingInfo pagingInfo, Func<int, string> pageUrl)
+            int totalPages, int currentPage, Func<int, string> pageUrl)
         {
             StringBuilder result = new StringBuilder();
 
-            for(int i = 1; i <= pagingInfo.TotalPages; i++)
+            for(int i = 1; i <= totalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(i));
                 tag.InnerHtml = i.ToString();
                 
-                if(pagingInfo.CurrentPage == i)
+                if(currentPage == i)
                 {
                     tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
+                    tag.AddCssClass("btn-first");
                 }
 
                 tag.AddCssClass("btn btn-default");

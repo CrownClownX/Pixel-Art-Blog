@@ -3,25 +3,29 @@ using Pixel_Art_Blog.Core;
 using Pixel_Art_Blog.Core.Domain;
 using Pixel_Art_Blog.Dtos;
 using Pixel_Art_Blog.Helpers;
+using Pixel_Art_Blog.Helpers.Interfaces;
 using Pixel_Art_Blog.Models;
+using Pixel_Art_Blog.Services.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-//TODO
-//Don't know how send image with Edit action. So it's still not implemented (here and in Repository)
-
 namespace Pixel_Art_Blog.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IUnitOfWork _unitOfWork;
+        private IImageManager _imageManager;
+        private readonly IHttpContextService _contextService;
 
-        public AdminController(IUnitOfWork unitOfWork)
+        public AdminController(IUnitOfWork unitOfWork, IImageManager imageManager, IHttpContextService contextService)
         {
             _unitOfWork = unitOfWork;
+            _imageManager = imageManager;
+            _contextService = contextService;
         }
 
         // GET: Admin
@@ -47,12 +51,10 @@ namespace Pixel_Art_Blog.Controllers
 
         public ActionResult EditPost(int id = 0)
         {
-            if(id == 0)
-            {
-                return HttpNotFound();
-            }
-
             var post = _unitOfWork.Posts.Get(id);
+
+            if (post == null)
+                return HttpNotFound();
 
             var model = new NewPostViewModel()
             {
@@ -68,23 +70,27 @@ namespace Pixel_Art_Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(FormViewModel formData)
         {
-            if (!ModelState.IsValid)
+            if(formData == null)
+                return RedirectToAction("NewPost");
+
+            var model = new NewPostViewModel()
             {
-                var model = new NewPostViewModel()
-                {
-                    Categories = _unitOfWork.Categories.GetAll()
-                      .Select(Mapper.Map<Category, CategoryDto>).ToList(),
-                    Post = formData.Post,
-                    Img = formData.Img
-                };
+                 Categories = _unitOfWork.Categories.GetAll()
+                     .Select(Mapper.Map<Category, CategoryDto>).ToList(),
+                 Post = formData.Post,
+                 Img = formData.Img
+            };
 
+           if (!ModelState.IsValid)
                 return View("PostForge", model);
-            }
 
-            formData.Post.Img = ImageManager.GetImagePath(formData.Img,
-                _unitOfWork, HttpContext.Server.MapPath("~/Content/Img/")) ?? formData.Post.Img;
-           
-            _unitOfWork.Posts.Save(Mapper.Map<PostDto, Post>(formData.Post));
+            formData.Post.Img = _imageManager.SaveImage(formData.Img, 
+                _contextService.GetMapPath("~/Content/Img/"));
+
+            if(formData.Post.Img == null)
+                return View("PostForge", model);
+
+            _unitOfWork.Posts.Add(Mapper.Map<PostDto, Post>(formData.Post));
             _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Post");

@@ -1,5 +1,6 @@
 ﻿using Pixel_Art_Blog.Core.Domain;
 using Pixel_Art_Blog.Dtos;
+using Pixel_Art_Blog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace Pixel_Art_Blog.Core.Repositories
     public interface IPostRepository : IRepository<Post>
     {
         IEnumerable<Post> GetPostsRange(int page, int size);
-        IEnumerable<Post> GetPostsRangeWithCategory(int page, int size, int categoryId);
-        void Save(Post post);
+        QueryResult GetFiltrated(QueryInfo query);
     }
 }

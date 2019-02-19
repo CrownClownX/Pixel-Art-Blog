@@ -1,6 +1,10 @@
 ﻿using Ninject;
 using Pixel_Art_Blog.Core;
+using Pixel_Art_Blog.Helpers;
+using Pixel_Art_Blog.Helpers.Interfaces;
 using Pixel_Art_Blog.Persistence;
+using Pixel_Art_Blog.Services;
+using Pixel_Art_Blog.Services.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +36,9 @@ namespace Pixel_Art_Blog.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<IImageManager>().To<ImageManager>();
+            kernel.Bind<IHttpContextService>().To<HttpContextService>();
+            kernel.Bind<IEmailManager>().To<EmailManager>();
         }
     }
 }

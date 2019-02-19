@@ -1,37 +1,40 @@
-﻿<section class="section-newsletter" id="subscire">
-    <form method="POST" action="#" class="newsletter-form">
-        <div class="row">
-            <h2 class="bar">Subscribe to newsletter</h2>
-        </div>
+﻿@model Pixel_Art_Blog.Core.Domain.Subscriber
 
-        <div class="row news-box">
-            <div class="col span-1-of-3">
-                <label for="name">Name</label>
+<section class="section-newsletter" id="subscire">
+    <div class="row">
+        <h2 class="bar">Subscribe to newsletter</h2>
+    </div>
+
+    <div class="row">
+        @using (Html.BeginForm("AddSubscriber", "Subscribtion", FormMethod.Post,
+            new { @class = "newsletter-form" }))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Name, new
+                {
+                    @class = "form-control",
+                    placeholder = "Name",
+                    required = true
+                })
+                @Html.ValidationMessageFor(m => m.Name)
             </div>
 
-            <div class="col span-2-of-3">
-                <input type="text" name="name" id="name" placeholder="Your name" required />
-            </div>
-        </div>
-
-        <div class="row news-box">
-            <div class="col span-1-of-3">
-                <label for="email">Email</label>
-            </div>
-
-            <div class="col span-2-of-3">
-                <input type="email" name="email" id="email" placeholder="Email" required />
-            </div>
-        </div>
-
-        <div class="row news-box">
-            <div class="col span-1-of-3">
-                <label>&nbsp;</label>
+            <div class="form-group news-box">
+                @Html.TextBoxFor(m => m.Email, new
+                {
+                    @class = "form-control",
+                    placeholder = "Email",
+                    required = true,
+                    type = "email"
+                })
+                @Html.ValidationMessageFor(m => m.Email)
             </div>
 
-            <div class="col span-2-of-3">
-                <input type="submit" value="Subscribe!" />
-            </div>
-        </div>
-    </form>
+            @Html.HiddenFor(m => m.ID)
+            @Html.AntiForgeryToken()
+            <input type="submit" class="btn btn-first" value="Subscribe!"/>
+        }
+    </div>
+
+    <div class="clearfix"></div>
 </section>

@@ -273,3 +273,6 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.xml
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\bin\FluentValidation.Mvc.xml
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel-Art-Blog.csprojResolveAssemblyReference.cache
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.ChangesInPostConfiguration.resources
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.SubscirbersTableAdded.resources
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.IdentityTables.resources
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog\obj\Debug\Pixel_Art_Blog.Migrations.AddUser.resources

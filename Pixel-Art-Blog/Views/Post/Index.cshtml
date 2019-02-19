@@ -1,6 +1,7 @@
 ﻿@model Pixel_Art_Blog.Models.MainIndexViewModel
 
 @{
+    Layout = "~/Views/Shared/_Layout_Index.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -9,87 +10,65 @@
         Make things in loop
     -->
 
+@Html.Partial("_Header")
+
 <section class="section-posts">
     <div class="row">
         <div class="col span-2-of-3 main-box">
-            <div class=" main-box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/days.png" alt="Days" />
-                </figure>
-                <h2>@Html.ActionLink(Model.MainPost.Title, "Post", "Post", 
-                   new { id = Model.MainPost.ID }, null)</h2>
+            @if (Model.MainPost != null)
+            {
+                <div class=" main-box">
+                    <figure class="post-image">
+                        <img src="~/Content/Resources/Img/days.png" alt="Days" />
+                    </figure>
+                    <h2>
+                        @Html.ActionLink(Model.MainPost.Title, "Post", "Post",
+                             new { id = Model.MainPost.ID }, null)
+                </h2>
                 <p class="main-post">
                     @Model.MainPost.Description
                 </p>
             </div>
+        }
         </div>
 
         <div class="col span-1-of-3">
-            <div class="box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
-                </figure>
-                <h3>@Html.ActionLink(Model.SidePosts[0].Title, "Post", "Post",
-                    new { id = Model.SidePosts[0].ID }, null)</h3>
-                <p>
-                    @Model.SidePosts[0].Description
-                </p>
-            </div>
-
-            <div class="box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/car.png" alt="Car" />
-                </figure>
-                <h3>@Html.ActionLink(Model.SidePosts[1].Title, "Post", "Post",
-                    new { id = Model.SidePosts[1].ID }, null)</h3>
-                <p>
-                    @Model.SidePosts[1].Description
-                </p>
-            </div>
+            @foreach (var post in Model.SidePosts)
+            {
+                <div class="box">
+                    <figure class="post-image">
+                        <img src="~/Content/Resources/Img/@post.Img" alt="@post.Img" />
+                    </figure>
+                    <h3>
+                        @Html.ActionLink(post.Title, "Post", "Post",
+                                 new { id = post.ID }, null)
+                    </h3>
+                    <p>
+                        @post.Description
+                    </p>
+                </div>
+            }
         </div>
     </div>
 
     <div class="row">
-        <div class="col span-1-of-3">
-            <div class="box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/bubles.png" alt="Bubles" />
-                </figure>
-                <h3>@Html.ActionLink(Model.RowPosts[0].Title, "Post", "Post",
-                    new { id = Model.RowPosts[0].ID }, null)</h3>
-                <p>
-                    @Model.RowPosts[0].Description
-                </p>
+        @foreach (var post in Model.RowPosts)
+        {
+            <div class="col span-1-of-3">
+                <div class="box">
+                    <figure class="post-image">
+                        <img src="~/Content/Resources/Img/@post.Img" alt="@post.Img" />
+                    </figure>
+                    <h3>
+                        @Html.ActionLink(post.Title, "Post", "Post",
+                                 new { id = post.ID }, null)
+                    </h3>
+                    <p>
+                        @post.Description
+                    </p>
+                </div>
             </div>
-        </div>
-
-        <div class="col span-1-of-3">
-            <div class="box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/car.png" alt="Car" />
-                </figure>
-                <h3>@Html.ActionLink(Model.RowPosts[1].Title, "Post", "Post",
-                    new { id = Model.RowPosts[1].ID }, null)</h3>
-                <p>
-                    @Model.RowPosts[1].Description
-                </p>
-            </div>
-        </div>
-
-        <div class="col span-1-of-3">
-            <div class="box">
-                <figure class="post-image">
-                    <img src="~/Content/Resources/Img/tower.png" alt="Tower" />
-                </figure>
-                <h3>@Html.ActionLink(Model.RowPosts[2].Title, "Post", "Post",
-                    new { id = Model.RowPosts[2].ID }, null)    
-                </h3>
-                <p>
-                    @Model.RowPosts[2].Description
-                </p>
-            </div>
-        </div>
-
+        }
     </div>
 </section>
 
@@ -138,4 +117,4 @@
 </section>
 
 @Html.Partial("_Tutorial")
-@Html.Partial("_Subscription")
+@Html.Partial("_Subscription", Model.Subscriber)

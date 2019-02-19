@@ -15,14 +15,14 @@ namespace Pixel_Art_Blog
 
             routes.MapRoute(
                 name: null,
-                url: "posts{page}/{categoryId}",
-                defaults: new { controller = "post", action = "AllPosts", categoryId = UrlParameter.Optional, page = UrlParameter.Optional }
+                url: "contact",
+                defaults: new {controller = "contact", action = "index"}
             );
 
             routes.MapRoute(
                 name: null,
-                url: "tutorial",
-                defaults: new { controller = "post", action = "tutorial" }
+                url: "posts{page}/{categoryId}",
+                defaults: new { controller = "post", action = "AllPosts", categoryId = UrlParameter.Optional, page = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -35,6 +35,13 @@ namespace Pixel_Art_Blog
                 name: null,
                 url: "post{id}",
                 defaults: new { controller = "post", action = "post", id = UrlParameter.Optional }
+            );
+
+
+            routes.MapRoute(
+                name: null,
+                url: "index",
+                defaults: new { controller = "post", action = "index" }
             );
 
             routes.MapRoute(

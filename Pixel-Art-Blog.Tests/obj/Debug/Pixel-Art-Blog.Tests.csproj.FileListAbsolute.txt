@@ -70,3 +70,5 @@ C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentVal
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.Mvc.dll
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.xml
 C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\FluentValidation.Mvc.xml
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hamer\Desktop\GIT\PixelArtBlog\Pixel-Art-Blog.Tests\bin\Debug\EntityFramework.SqlServer.xml

@@ -224,20 +224,29 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SubscribtionController.cs" />
     <Compile Include="Core\Domain\Category.cs" />
     <Compile Include="Core\Domain\Post.cs" />
+    <Compile Include="Core\Domain\Subscriber.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\ICategoryRepository.cs" />
     <Compile Include="Core\Repositories\IPostRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="Core\Repositories\ISubscriberRepository.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\PostDto.cs" />
+    <Compile Include="Dtos\SubscriberDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppSettings.cs" />
+    <Compile Include="Helpers\EmailManager.cs" />
     <Compile Include="Helpers\ImageManager.cs" />
+    <Compile Include="Helpers\Interfaces\IEmailManager.cs" />
+    <Compile Include="Helpers\Interfaces\IImageManager.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201809290626120_PostsAndCategoriesTables.cs" />
@@ -252,24 +261,41 @@
     <Compile Include="Migrations\201810030301316_ChangesInPostConfiguration.Designer.cs">
       <DependentUpon>201810030301316_ChangesInPostConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810101346052_SubscirbersTableAdded.cs" />
+    <Compile Include="Migrations\201810101346052_SubscirbersTableAdded.Designer.cs">
+      <DependentUpon>201810101346052_SubscirbersTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071513569_IdentityTables.cs" />
+    <Compile Include="Migrations\201902071513569_IdentityTables.Designer.cs">
+      <DependentUpon>201902071513569_IdentityTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071551293_AddUser.cs" />
+    <Compile Include="Migrations\201902071551293_AddUser.Designer.cs">
+      <DependentUpon>201902071551293_AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllPostsViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\FormViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainIndexViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewPostViewModel.cs" />
-    <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\QueryInfo.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\QueryResult.cs" />
     <Compile Include="Persistence\BlogContext.cs" />
     <Compile Include="Persistence\Configurations\PostConfiguration.cs" />
-    <Compile Include="Persistence\Configurations\PostDtoValidator.cs" />
+    <Compile Include="Persistence\Configurations\SubscriptionConfiguration.cs" />
     <Compile Include="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Include="Persistence\Repositories\PostRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\Repositories\SubscribtionRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\IHttpContextService.cs" />
+    <Compile Include="Services\HttpContextService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -290,10 +316,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\copy_csv_xls_pdf.swf" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-te-1.4.0.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -303,6 +333,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\TableTools.js" />
+    <Content Include="Scripts\TableTools_orig.js" />
+    <Content Include="Scripts\ZeroClipboard.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -313,7 +346,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -344,7 +377,11 @@
     <Content Include="Views\Post\_Tutorial.cshtml" />
     <Content Include="Views\Post\_Subscription.cshtml" />
     <Content Include="Views\Post\AllPosts.cshtml" />
-    <Content Include="Views\Post\TutorialPage.cshtml" />
+    <Content Include="Views\Post\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Subscribtion\AfterSignUp.cshtml" />
+    <Content Include="Views\Subscribtion\AlreadyExist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,6 +408,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810030301316_ChangesInPostConfiguration.resx">
       <DependentUpon>201810030301316_ChangesInPostConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101346052_SubscirbersTableAdded.resx">
+      <DependentUpon>201810101346052_SubscirbersTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071513569_IdentityTables.resx">
+      <DependentUpon>201902071513569_IdentityTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071551293_AddUser.resx">
+      <DependentUpon>201902071551293_AddUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

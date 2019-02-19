@@ -10,7 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 
 //TODO
-//    implementation of Post if equal null
 //    implementation of Index if number of posts is less than 6
 //    tests to both mentioned above
 
@@ -34,19 +33,45 @@ namespace Pixel_Art_Blog.Controllers
             var categories = _unitOfWork.Categories.GetAll().ToList()
                     .Select(Mapper.Map<Category, CategoryDto>).ToList();
 
-            MainIndexViewModel model = new MainIndexViewModel(posts, categories);
+            MainIndexViewModel model = new MainIndexViewModel(posts, categories)
+            {
+                Subscriber = new Subscriber()
+            };
 
             return View(model);
         }
 
-        public ViewResult Post(int id)
+        public ActionResult AllPosts(int page = 1, int? categoryId = null)
+        {
+            var query = new QueryInfo()
+            {
+                ItemsPerPage = _PageSize,
+                CategoryId = categoryId,
+                CurrentPage = page,
+                IfIncluded = true
+            };
+
+            var result = _unitOfWork.Posts.GetFiltrated(query);
+
+            if (result.Posts.Count() == 0)
+                return HttpNotFound();
+
+            var model = new AllPostsViewModel
+            {
+                Categories = _unitOfWork.Categories.GetAll()
+                    .Select(Mapper.Map<Category, CategoryDto>).ToList(),
+                Result = result
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Post(int id)
         {
             var post = _unitOfWork.Posts.Get(id);
 
             if (post == null)
-            {
-                throw new NotImplementedException();
-            }
+                return HttpNotFound();
 
             var model = new PostViewModel()
             {
@@ -59,35 +84,6 @@ namespace Pixel_Art_Blog.Controllers
         public ViewResult About()
         {
             return View();
-        }
-
-        public ViewResult AllPosts(int page = 1, int categoryId = 0)
-        {
-            var posts = categoryId != 0
-                ? _unitOfWork.Posts.GetPostsRangeWithCategory(page, _PageSize, categoryId)
-                : _unitOfWork.Posts.GetPostsRange(page, _PageSize);
-
-            var pageInfo = new PagingInfo
-            {
-                CurrentPage = page,
-                TotalItems = _unitOfWork.Posts.GetAll().Count(),
-                ItemsPerPage = _PageSize
-            };
-
-            var model = new AllPostsViewModel
-            {
-                Posts = posts.Select(Mapper.Map<Post, PostDto>).ToList(),
-                Categories = _unitOfWork.Categories.GetAll()
-                    .Select(Mapper.Map<Category, CategoryDto>).ToList(),
-                Info = pageInfo
-            };
-
-            return View(model);
-        }
-
-        public ViewResult Tutorial()
-        {
-            return View("TutorialPage");
         }
     }
 }

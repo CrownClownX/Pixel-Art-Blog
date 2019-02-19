@@ -16,9 +16,9 @@ namespace Pixel_Art_Blog.Models
                 throw new NotImplementedException();
             }
 
-            MainPost = posts[0];
-            SidePosts = posts.GetRange(1, 2);
-            RowPosts = posts.GetRange(3, 3);
+            MainPost = posts[0] ?? new PostDto();
+            SidePosts = posts.GetRange(1, 2) ?? new List<PostDto>(); 
+            RowPosts = posts.GetRange(3, 3) ?? new List<PostDto>(); 
             Categories = categories;
         }
 
@@ -26,5 +26,6 @@ namespace Pixel_Art_Blog.Models
         public List<PostDto> SidePosts { get; set; }
         public List<PostDto> RowPosts { get; set; }
         public List<CategoryDto> Categories { get; set; }
+        public Subscriber Subscriber { get; set; }
     }
 }

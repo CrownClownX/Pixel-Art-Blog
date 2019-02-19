@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "PostForge";
 }
-<div class="row panel-container">
-    <h2>PostForge</h2>
+<div class="container">
+    <h1>PostForge</h1>
 
     @using (Html.BeginForm("Save", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -33,7 +33,7 @@
               
         <div class="form-group">
             @Html.LabelFor(m => m.Img)
-            <input data-rule-validImg="true" type="file" id="file-input" name="Img" onchange="addImage()"/>
+            <input class="inputfile" data-rule-validImg="true" type="file" id="file-input" name="Img" onchange="addImage()"/>
             
             <div id="img-container">
                 @if (Model.Post.ID != 0)
@@ -45,7 +45,7 @@
 
         @Html.HiddenFor(m => m.Post.ID)
         @Html.AntiForgeryToken()
-        <button type="submit" class="btn btn-primary">Save</button>
+        <input type="submit" class="btn btn-first" value="Save"/>
     }
 </div>
 

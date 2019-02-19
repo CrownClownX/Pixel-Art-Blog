@@ -1,0 +1,61 @@
+﻿@model Pixel_Art_Blog.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h1 class="bar">Contact</h1>
+
+<div class="row">
+    <div class="col span-1-of-3">
+        <div class="center-box">
+            <h3>Headquarters</h3>
+            <ul>
+                <li>22 Random Street, Random Floor</li>
+                <li>Random Place, Random Number</li>
+                <li>Weird Country</li>
+            </ul>
+
+            <h3>Remote</h3>
+            <ul>
+                <li>contact@pixelart.com</li>
+                <li>+2 322 434 324</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col span-2-of-3">
+        <div class="center-box">
+            <h3>Ask Question!</h3>
+            <div class="form-group">
+                @using (Html.BeginForm("SendMessage", "Contact"))
+                {
+                    <div class="form-group input-box">
+                        @Html.TextBoxFor(c => c.Email, new
+                        {
+                            @class = "form-control",
+                            placeholder = "Email",
+                            required = true,
+                            type = "email"
+                        })
+                    </div>
+
+                    <div class="form-group input-box">
+                        @Html.TextAreaFor(c => c.Text, new
+                        {
+                            @class = "form-control",
+                            placeholder = "Message",
+                            rows = 5,
+                            required = true
+                        })
+                    </div>
+
+                    @Html.AntiForgeryToken()
+                    <input type="submit" class="btn btn-first" value="Send" />
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -8,8 +8,7 @@ namespace Pixel_Art_Blog.Models
 {
     public class AllPostsViewModel
     {
-        public List<PostDto> Posts { get; set; }
         public List<CategoryDto> Categories { get; set; }
-        public PagingInfo Info { get; set; }
+        public QueryResult Result { get; set; }
     }
 }

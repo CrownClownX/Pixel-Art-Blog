@@ -12,15 +12,17 @@ namespace Pixel_Art_Blog.Persistence
     {
         private readonly BlogContext _context;
 
+        public IPostRepository Posts { get; private set; }
+        public ICategoryRepository Categories { get; private set; }
+        public ISubscriberRepository Subscribers { get; private set; }
+
         public UnitOfWork(BlogContext context)
         {
             _context = context;
             Posts = new PostRepository(context);
             Categories = new CategoryRepository(context);
+            Subscribers = new SubscribtionRepository(context);
         }
-
-        public IPostRepository Posts { get; private set; }
-        public ICategoryRepository Categories { get; private set; }
 
         public int Complete()
         {
