@@ -46,7 +46,14 @@ namespace Pixel_Art_Blog.Controllers
             message.Body = string.Format(body, "User", contactForm.Email, contactForm.Text);
             message.IsBodyHtml = true;
 
-            await _emailManager.EmailSenderAsync(message);
+            try
+            {
+                await _emailManager.EmailSenderAsync(message);
+            }
+            catch(Exception e)
+            {
+                return View("Error");
+            }
 
             return RedirectToAction("Index", "Post");
         }

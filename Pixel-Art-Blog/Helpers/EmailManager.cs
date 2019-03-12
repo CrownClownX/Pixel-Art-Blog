@@ -19,15 +19,39 @@ namespace Pixel_Art_Blog.Helpers
 
         public EmailManager()
         {
-            _userName = AppSettings.Setting<string>("mailAccount");
-            _password = AppSettings.Setting<string>("mailPassword");
-            _host = AppSettings.Setting<string>("host");
-            _port = AppSettings.Setting<int>("port");
-            _enableSsl = AppSettings.Setting<bool>("enableSsl");
+        }
+
+        private void GetDataFromSettings()
+        {
+            try
+            {
+                _userName = AppSettings.Setting<string>("mailAccount");
+                _password = AppSettings.Setting<string>("mailPassword");
+                _host = AppSettings.Setting<string>("host");
+                _port = AppSettings.Setting<int>("port");
+                _enableSsl = AppSettings.Setting<bool>("enableSsl");
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task EmailSenderAsync(MailMessage message)
         {
+            if(_userName == null)
+            {
+                try
+                {
+                    GetDataFromSettings();
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+
+            }
+
             using (var smtp = new SmtpClient())
             {
                 var credential = new NetworkCredential
