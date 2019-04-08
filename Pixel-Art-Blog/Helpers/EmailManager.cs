@@ -11,19 +11,30 @@ namespace Pixel_Art_Blog.Helpers
 {
     public class EmailManager : IEmailManager
     {
+        private IAppSettings _appSettings;
+
         private string _userName;
         private string _password;
         private string _host;
         private int _port;
         private bool _enableSsl;
 
-        public EmailManager()
+        public EmailManager(IAppSettings appSettings)
         {
-            _userName = AppSettings.Setting<string>("mailAccount");
-            _password = AppSettings.Setting<string>("mailPassword");
-            _host = AppSettings.Setting<string>("host");
-            _port = AppSettings.Setting<int>("port");
-            _enableSsl = AppSettings.Setting<bool>("enableSsl");
+            _appSettings = appSettings;
+
+            try
+            {
+                _userName = _appSettings.Setting<string>("mailAccount");
+                _password = _appSettings.Setting<string>("mailPassword");
+                _host = _appSettings.Setting<string>("host");
+                _port = _appSettings.Setting<int>("port");
+                _enableSsl = _appSettings.Setting<bool>("enableSsl");
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task EmailSenderAsync(MailMessage message)

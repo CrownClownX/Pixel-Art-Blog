@@ -39,6 +39,7 @@ namespace Pixel_Art_Blog.Infrastructure
             kernel.Bind<IImageManager>().To<ImageManager>();
             kernel.Bind<IHttpContextService>().To<HttpContextService>();
             kernel.Bind<IEmailManager>().To<EmailManager>();
+            kernel.Bind<IAppSettings>().To<AppSettings>();
         }
     }
 }

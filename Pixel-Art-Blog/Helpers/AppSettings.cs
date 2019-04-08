@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pixel_Art_Blog.Helpers.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
@@ -7,9 +8,9 @@ using System.Web;
 
 namespace Pixel_Art_Blog.Helpers
 {
-    public static class AppSettings
+    public class AppSettings : IAppSettings
     {
-        public static T Setting<T>(string name)
+        public T Setting<T>(string name)
         {
             string value = ConfigurationManager.AppSettings[name];
 
