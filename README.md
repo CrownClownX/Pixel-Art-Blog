@@ -20,6 +20,7 @@ Project still requires some changes, mostly with error management on frontend. T
 
 ## Setup
 To make contact form working application require additional setting file. It should look like this :
+```
   <appSettings>
     <add key="mailAccount" value="example@email.com" />
     <add key="mailPassword" value="ExamplePassword" />
@@ -27,9 +28,12 @@ To make contact form working application require additional setting file. It sho
     <add key="port" value="587" />
     <add key="enableSsl" value="true" />
   </appSettings>
+```
 File must have extension .config. mailAccount and mailPassword should be changed to real creditentials provided by user. 
 Path to file is defined in web.config in section appSettings: 
+```
   <appSettings file="..\..\appsettings.config">
+```
 Field file should be changed to match path of new appsettings file.
 
 To get to admin panel use route /admin (like this http://localhost:54043/admin). Then, you will see sign in panel. Type :
