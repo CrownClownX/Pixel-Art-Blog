@@ -32,6 +32,7 @@ namespace Pixel_Art_Blog.Helpers
                 return null;
 
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(img.FileName);
+
             img.SaveAs(path + fileName);
 
             return fileName;

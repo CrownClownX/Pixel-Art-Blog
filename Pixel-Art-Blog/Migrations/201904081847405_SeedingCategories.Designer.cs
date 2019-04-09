@@ -7,13 +7,13 @@ namespace Pixel_Art_Blog.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddUser : IMigrationMetadata
+    public sealed partial class SeedingCategories : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedingCategories));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902071551293_AddUser"; }
+            get { return "201904081847405_SeedingCategories"; }
         }
         
         string IMigrationMetadata.Source

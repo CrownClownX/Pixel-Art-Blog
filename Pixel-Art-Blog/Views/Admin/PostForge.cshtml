@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "PostForge";
 }
+
 <div class="container">
     <h1>PostForge</h1>
 
@@ -30,22 +31,22 @@
             @Html.DropDownListFor(m => m.Post.CategoryID, new SelectList(Model.Categories, "ID", "Name"), "", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Post.CategoryID)
         </div>
-              
+
         <div class="form-group">
             @Html.LabelFor(m => m.Img)
-            <input class="inputfile" data-rule-validImg="true" type="file" id="file-input" name="Img" onchange="addImage()"/>
-            
+            <input class="inputfile" data-rule-validImg="true" type="file" id="file-input" name="Img" onchange="addImage()" />
+
             <div id="img-container">
                 @if (Model.Post.ID != 0)
                 {
-                    <img id="upload-img" src="~/Content/Img/@Model.Post.Img" alt="Dodaj zdjęcie"/>
+                    <img id="upload-img" src="~/Content/Img/@Model.Post.Img" alt="Dodaj zdjęcie" />
                 }
             </div>
-        </div>        
+        </div>
 
         @Html.HiddenFor(m => m.Post.ID)
         @Html.AntiForgeryToken()
-        <input type="submit" class="btn btn-first" value="Save"/>
+        <input type="submit" class="btn btn-first" value="Save" />
     }
 </div>
 
@@ -78,6 +79,6 @@
                         + event.target.result + '" alt="Dodaj zdjęcie"/>');
                 }
             }
-        }     
+        }
     </script>
 }

@@ -270,9 +270,13 @@
     <Compile Include="Migrations\201902071513569_IdentityTables.Designer.cs">
       <DependentUpon>201902071513569_IdentityTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902071551293_AddUser.cs" />
-    <Compile Include="Migrations\201902071551293_AddUser.Designer.cs">
-      <DependentUpon>201902071551293_AddUser.cs</DependentUpon>
+    <Compile Include="Migrations\201904081847405_SeedingCategories.cs" />
+    <Compile Include="Migrations\201904081847405_SeedingCategories.Designer.cs">
+      <DependentUpon>201904081847405_SeedingCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904081933161_SeedUser.cs" />
+    <Compile Include="Migrations\201904081933161_SeedUser.Designer.cs">
+      <DependentUpon>201904081933161_SeedUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -417,8 +421,11 @@
     <EmbeddedResource Include="Migrations\201902071513569_IdentityTables.resx">
       <DependentUpon>201902071513569_IdentityTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071551293_AddUser.resx">
-      <DependentUpon>201902071551293_AddUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904081847405_SeedingCategories.resx">
+      <DependentUpon>201904081847405_SeedingCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904081933161_SeedUser.resx">
+      <DependentUpon>201904081933161_SeedUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

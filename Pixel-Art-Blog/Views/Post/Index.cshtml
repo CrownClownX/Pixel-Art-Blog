@@ -11,7 +11,6 @@
     -->
 
 @Html.Partial("_Header")
-
 <section class="section-posts">
     <div class="row">
         <div class="col span-2-of-3 main-box">
@@ -19,7 +18,7 @@
             {
                 <div class=" main-box">
                     <figure class="post-image">
-                        <img src="~/Content/Resources/Img/days.png" alt="Days" />
+                        <img src="~/Content/Img/@Model.MainPost.Img" alt="Days" />
                     </figure>
                     <h2>
                         @Html.ActionLink(Model.MainPost.Title, "Post", "Post",
@@ -33,41 +32,47 @@
         </div>
 
         <div class="col span-1-of-3">
-            @foreach (var post in Model.SidePosts)
+            @if (Model.SidePosts != null)
             {
-                <div class="box">
-                    <figure class="post-image">
-                        <img src="~/Content/Resources/Img/@post.Img" alt="@post.Img" />
-                    </figure>
-                    <h3>
-                        @Html.ActionLink(post.Title, "Post", "Post",
-                                 new { id = post.ID }, null)
-                    </h3>
-                    <p>
-                        @post.Description
-                    </p>
-                </div>
+                foreach (var post in Model.SidePosts)
+                {
+                    <div class="box">
+                        <figure class="post-image">
+                            <img src="~/Content/Img/@post.Img" alt="@post.Img" />
+                        </figure>
+                        <h3>
+                            @Html.ActionLink(post.Title, "Post", "Post",
+                                      new { id = post.ID }, null)
+                        </h3>
+                        <p>
+                            @post.Description
+                        </p>
+                    </div>
+                }
             }
         </div>
     </div>
 
     <div class="row">
-        @foreach (var post in Model.RowPosts)
+        @if(Model.RowPosts != null)
         {
-            <div class="col span-1-of-3">
-                <div class="box">
-                    <figure class="post-image">
-                        <img src="~/Content/Resources/Img/@post.Img" alt="@post.Img" />
-                    </figure>
-                    <h3>
-                        @Html.ActionLink(post.Title, "Post", "Post",
-                                 new { id = post.ID }, null)
-                    </h3>
-                    <p>
-                        @post.Description
-                    </p>
+            foreach(var post in Model.RowPosts)
+            {
+                <div class="col span-1-of-3">
+                    <div class="box">
+                        <figure class="post-image">
+                            <img src="~/Content/Img/@post.Img" alt="@post.Img" />
+                        </figure>
+                        <h3>
+                            @Html.ActionLink(post.Title, "Post", "Post",
+                                  new { id = post.ID }, null)
+                        </h3>
+                        <p>
+                            @post.Description
+                        </p>
+                    </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </section>

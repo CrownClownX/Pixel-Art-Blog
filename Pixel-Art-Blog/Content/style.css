@@ -19,6 +19,12 @@ body {
     overflow-x: hidden;
 }
 
+.mainCont {
+    min-height: 100vh;
+    overflow: auto;
+    position: relative;
+}
+
 /*----------------------------------------------*/
 /*---------------- REUSABLE SETUP ----------------*/
 /*----------------------------------------------*/
@@ -120,8 +126,8 @@ h3 {
 /*----------------------------------------------*/
 
 header {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/header.png);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/header.png);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(resources/img/header.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(resources/img/header.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -333,8 +339,8 @@ input[type=submit] {
 /*----------------------------------------------*/
 
 .section-categories {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/rise.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/rise.jpg);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(resources/img/rise.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(resources/img/rise.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -480,6 +486,12 @@ footer {
     background-color: rgb(32, 32, 32);
     padding: 50px;
     font-size: 90%;
+}
+
+.footer-special footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .footer-info,

@@ -12,6 +12,14 @@ namespace Pixel_Art_Blog.Dtos
 {
     public class PostDto
     {
+        public PostDto()
+        {
+            Title = "";
+            Description = "";
+            Content = "";
+            Category = new CategoryDto();
+        }
+
         public int ID { get; set; }
 
         [Required]

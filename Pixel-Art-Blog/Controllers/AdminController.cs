@@ -8,6 +8,7 @@ using Pixel_Art_Blog.Models;
 using Pixel_Art_Blog.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,12 +21,18 @@ namespace Pixel_Art_Blog.Controllers
         private IUnitOfWork _unitOfWork;
         private IImageManager _imageManager;
         private readonly IHttpContextService _contextService;
+        private readonly string _path = "~/Content/Img/";
 
         public AdminController(IUnitOfWork unitOfWork, IImageManager imageManager, IHttpContextService contextService)
         {
             _unitOfWork = unitOfWork;
             _imageManager = imageManager;
             _contextService = contextService;
+
+            if (!Directory.Exists(_contextService.GetMapPath(_path)))
+            {
+                Directory.CreateDirectory(_contextService.GetMapPath(_path));
+            }
         }
 
         // GET: Admin
@@ -81,11 +88,11 @@ namespace Pixel_Art_Blog.Controllers
                  Img = formData.Img
             };
 
-           if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View("PostForge", model);
 
             formData.Post.Img = _imageManager.SaveImage(formData.Img, 
-                _contextService.GetMapPath("~/Content/Img/"));
+                _contextService.GetMapPath(_path));
 
             if(formData.Post.Img == null)
                 return View("PostForge", model);

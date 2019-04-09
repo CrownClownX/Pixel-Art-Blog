@@ -11,14 +11,13 @@ namespace Pixel_Art_Blog.Models
     {
         public MainIndexViewModel(List<PostDto> posts, List<CategoryDto> categories)
         {
-            if (posts.Count < 6)
-            {
-                throw new NotImplementedException();
-            }
+            if (posts.Count() != 0)
+                MainPost = posts[0];
+            else 
+                MainPost = null;
 
-            MainPost = posts[0] ?? new PostDto();
-            SidePosts = posts.GetRange(1, 2) ?? new List<PostDto>(); 
-            RowPosts = posts.GetRange(3, 3) ?? new List<PostDto>(); 
+            SidePosts = _setPosts(posts, 1, 2);
+            RowPosts = _setPosts(posts, 3, 3);
             Categories = categories;
         }
 
@@ -27,5 +26,27 @@ namespace Pixel_Art_Blog.Models
         public List<PostDto> RowPosts { get; set; }
         public List<CategoryDto> Categories { get; set; }
         public Subscriber Subscriber { get; set; }
+
+        private List<PostDto> _setPosts(List<PostDto> posts, int start, int size)
+        {
+            if(posts.Count() < start)
+            {
+                return null;
+            }
+
+            if(posts.Count() < (start + size))
+            {
+                size = posts.Count() - start;
+                //int differnce = posts.Count() - start;
+                //List<PostDto> list = new List<PostDto>();
+
+                //for (int i = start; i < (start + differnce); i++)
+                //    list.Add(posts[i]);
+
+                //return list;
+            }
+
+            return posts.GetRange(start, size);
+        }
     }
 }
