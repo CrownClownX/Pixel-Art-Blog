@@ -12,9 +12,13 @@ namespace Pixel_Art_Blog.Models
         public MainIndexViewModel(List<PostDto> posts, List<CategoryDto> categories)
         {
             if (posts.Count() != 0)
+            {
                 MainPost = posts[0];
-            else 
+            }
+            else
+            {
                 MainPost = null;
+            }
 
             SidePosts = _setPosts(posts, 1, 2);
             RowPosts = _setPosts(posts, 3, 3);
@@ -37,13 +41,6 @@ namespace Pixel_Art_Blog.Models
             if(posts.Count() < (start + size))
             {
                 size = posts.Count() - start;
-                //int differnce = posts.Count() - start;
-                //List<PostDto> list = new List<PostDto>();
-
-                //for (int i = start; i < (start + differnce); i++)
-                //    list.Add(posts[i]);
-
-                //return list;
             }
 
             return posts.GetRange(start, size);

@@ -45,6 +45,12 @@ namespace Pixel_Art_Blog
             );
 
             routes.MapRoute(
+                name: null,
+                url: "admin",
+                defaults: new { controller = "Admin", action = "AdminPanel"}
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }

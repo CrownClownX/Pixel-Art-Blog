@@ -9,9 +9,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-//TODO
-//    implementation of Index if number of posts is less than 6
-//    tests to both mentioned above
 
 namespace Pixel_Art_Blog.Controllers
 {
@@ -52,9 +49,6 @@ namespace Pixel_Art_Blog.Controllers
             };
 
             var result = _unitOfWork.Posts.GetFiltrated(query);
-
-            if (result.Posts.Count() == 0)
-                return HttpNotFound();
 
             var model = new AllPostsViewModel
             {

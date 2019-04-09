@@ -1,5 +1,5 @@
 # Pixel Art Blog
-Pixel Art Blog is simple CMS created with ASP.NET MVC5.  
+Pixel Art Blog is simple CMS created with ASP.NET MVC5.   
 
 ## Table of contents
 * [Status](#status)
@@ -9,7 +9,7 @@ Pixel Art Blog is simple CMS created with ASP.NET MVC5.
 
 
 ## Status
-Project still requires some changes, mostly with error management on frontend. 
+Project still requires some changes, mostly with error management on frontend. There are some problem with file input on Vivaldi browser. Server stops after uploading file. I'm not sure yet why this is happening, but it looks like other browsers (like Chrome and Firefox) don't have that bug.
 
 
 ## Technologies
@@ -19,7 +19,7 @@ Project still requires some changes, mostly with error management on frontend.
 
 
 ## Setup
-To make contact form working application require additional setting file. It should look like this:
+To make contact form working application require additional setting file. It should look like this :
   <appSettings>
     <add key="mailAccount" value="example@email.com" />
     <add key="mailPassword" value="ExamplePassword" />
@@ -27,9 +27,15 @@ To make contact form working application require additional setting file. It sho
     <add key="port" value="587" />
     <add key="enableSsl" value="true" />
   </appSettings>
-File must have extension .config. Path to file is defined in web.config in section appSettings: 
+File must have extension .config. mailAccount and mailPassword should be changed to real creditentials provided by user. 
+Path to file is defined in web.config in section appSettings: 
   <appSettings file="..\..\appsettings.config">
-Field file should be change to match path of new appsettings file.
+Field file should be changed to match path of new appsettings file.
+
+To get to admin panel use route /admin (like this http://localhost:54043/admin). Then, you will see sign in panel. Type :
+* admin@pixelart.com - login
+* Admin1! - password
+After successful signing in you'll be redirected to admin panel.
 
 
 ## Features
